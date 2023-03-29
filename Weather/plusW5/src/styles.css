@@ -1,0 +1,35 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.date .col-lg-8 {
+  text-align: right;
+  font-size: 40px;
+  font-weight: bold;
+}
+.date .col-lg-4 {
+  font-size: 20px;
+}
+
+.container {
+  padding: 100px;
+}
+.card {
+  background-color: #e3f6f5;
+}
+
+h4 {
+  font-style: italic;
+}
+h2 {
+  font-weight: bold;
+}
+.fa-solid {
+  font-size: 35px;
+}
+.fa-sun {
+  color: rgb(173, 173, 36);
+}
+.fa-cloud-rain {
+  color: blue;
+}
