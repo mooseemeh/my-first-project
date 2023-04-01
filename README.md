@@ -1,2 +1,2 @@
-# my-first-proj
+# my weather app
  
