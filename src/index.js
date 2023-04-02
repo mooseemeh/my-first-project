@@ -1,5 +1,5 @@
-function setDateTime() {
-  let now = new Date();
+function setDateTime(timestamp) {
+  let now = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -22,27 +22,29 @@ function setDateTime() {
   return today;
 }
 
-let todayDate = document.querySelector("#todayDate");
-todayDate.innerHTML = setDateTime();
-
 function setCity(event) {
   event.preventDefault();
   let citySearch = document.querySelector("#citySearch");
-  //console.log(citySearch.value);
-  let city = document.querySelector("#city");
-  city.innerHTML = citySearch.value;
   setApi(citySearch.value);
 }
 
 function setApi(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemp);
 }
 
 function showTemp(response) {
-  let cityTemp = Math.round(response.data.main.temp);
-  let currentWeather = document.querySelector("#todayWeather");
-  currentWeather.innerHTML = `${cityTemp}°F`;
+  let cityTemp = Math.round(response.data.temperature.current);
+  let city = response.data.city;
+  let dateElement = setDateTime(response.data.time * 1000);
+
+  let currentTemperature = document.querySelector("#todayWeather strong");
+  let citySearched = document.querySelector("#city");
+  let todayDate = document.querySelector("#todayDate");
+
+  currentTemperature.innerHTML = `${cityTemp}`;
+  citySearched.innerHTML = `${city}`;
+  todayDate.innerHTML = dateElement;
 }
 
 function getLocation(event) {
@@ -53,18 +55,11 @@ function getLocation(event) {
 function setCurrentLocation(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=imperial`;
-  axios.get(apiUrl).then(getCity);
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showTemp);
 }
 
-function getCity(response) {
-  let currentCity = response.data.name;
-  let city = document.querySelector("#city");
-  city.innerHTML = currentCity;
-  setApi(currentCity);
-}
-
-let apiKey = "667d9f573c8af4c33457be5d561a9148";
+let apiKey = "8b1e3171fc9032a9t40o6647047da630";
 
 let searchButton = document.querySelector("#search");
 searchButton.addEventListener("click", setCity);
