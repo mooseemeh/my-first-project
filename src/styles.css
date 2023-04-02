@@ -2,11 +2,23 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.weather-forecast {
+  max-width: 600px;
+  margin: 30px auto;
+}
+.weather-card {
+  padding: 20px;
+  border: 1.5px solid rgb(161, 91, 227);
+  border-width: 3px;
+  border-radius: 10px;
+}
+
 .date .col-lg-8 {
   text-align: right;
   font-size: 40px;
   font-weight: bold;
 }
+
 .date .col-lg-4 {
   font-size: 20px;
 }
