@@ -18,6 +18,14 @@ body {
   font-size: 40px;
   font-weight: bold;
 }
+#todayWeather {
+  font-size: 64px;
+}
+#todayWeather .units {
+  font-size: 16px;
+  top: -34px;
+  position: relative;
+}
 
 .date .col-lg-4 {
   font-size: 20px;
