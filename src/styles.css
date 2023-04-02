@@ -3,7 +3,7 @@ body {
 }
 
 .weather-forecast {
-  max-width: 600px;
+  max-width: 800px;
   margin: 30px auto;
 }
 .weather-card {
@@ -13,22 +13,32 @@ body {
   border-radius: 10px;
 }
 
-.date .col-lg-8 {
-  text-align: right;
-  font-size: 40px;
-  font-weight: bold;
+ul {
+  list-style: none;
+  font-size: 16px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0 0 0 20px;
+  text-align: left;
+  line-height: 20px;
+}
+li:first-letter {
+  text-transform: capitalize;
+}
+
+#dateDescription {
+  padding: 0;
 }
 #todayWeather {
-  font-size: 64px;
+  font-size: 70px;
+  text-align: right;
+  font-weight: bold;
 }
+
 #todayWeather .units {
   font-size: 16px;
   top: -34px;
   position: relative;
-}
-
-.date .col-lg-4 {
-  font-size: 20px;
 }
 
 .container {

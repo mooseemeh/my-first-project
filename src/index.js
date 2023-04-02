@@ -37,14 +37,17 @@ function showTemp(response) {
   let cityTemp = Math.round(response.data.temperature.current);
   let city = response.data.city;
   let dateElement = setDateTime(response.data.time * 1000);
+  let description = response.data.condition.description;
 
   let currentTemperature = document.querySelector("#todayWeather strong");
   let citySearched = document.querySelector("#city");
   let todayDate = document.querySelector("#todayDate");
+  let weatherDescription = document.querySelector("#description");
 
   currentTemperature.innerHTML = `${cityTemp}`;
   citySearched.innerHTML = `${city}`;
   todayDate.innerHTML = dateElement;
+  weatherDescription.innerHTML = description;
 }
 
 function getLocation(event) {

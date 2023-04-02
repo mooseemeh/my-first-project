@@ -24,11 +24,15 @@
     <div class="container">
       <div class="weather-forecast">
         <div class="weather-card">
-          <h4 class="card-title">Your Weather Forecast</h4>
           <h2 class="card-subtitle mb-2" id="city"></h2>
 
-          <div class="row date">
-            <div class="col-lg-4" id="todayDate"></div>
+          <div class="row overview">
+            <div class="col-lg-4" id="dateDescription">
+              <ul>
+                <li id="todayDate"></li>
+                <li id="description"></li>
+              </ul>
+            </div>
             <div class="col-lg-8" id="todayWeather">
               <i class="fa-solid fa-sun"></i> <strong>20</strong
               ><span class="units">°F | <a href="#">°C</a> </span>
