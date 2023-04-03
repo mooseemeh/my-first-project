@@ -66,7 +66,7 @@ function getLocation(event) {
 function setCurrentLocation(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${long}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemp);
   console.log(lat);
 }
