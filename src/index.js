@@ -39,18 +39,23 @@ function showTemp(response) {
   let dateElement = setDateTime(response.data.time * 1000);
   let description = response.data.condition.description;
   let wind = response.data.wind.speed;
+  let iconUrl = response.data.condition.icon_url;
+  let iconAlt = response.data.condition.icon;
 
   let currentTemperature = document.querySelector("#todayWeather strong");
   let citySearched = document.querySelector("#city");
   let todayDate = document.querySelector("#todayDate");
   let weatherDescription = document.querySelector("#description");
   let windSpeed = document.querySelector("#wind");
+  let icon = document.querySelector("#icon");
 
   currentTemperature.innerHTML = `${cityTemp}`;
   citySearched.innerHTML = `${city}`;
   todayDate.innerHTML = dateElement;
   weatherDescription.innerHTML = description;
   windSpeed.innerHTML = wind;
+  icon.setAttribute("src", iconUrl);
+  icon.setAttribute("alt", iconAlt);
 }
 
 function getLocation(event) {
@@ -63,9 +68,11 @@ function setCurrentLocation(position) {
   let long = position.coords.longitude;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemp);
+  console.log(lat);
 }
 
 let apiKey = "8b1e3171fc9032a9t40o6647047da630";
+setApi("New York City");
 
 let searchButton = document.querySelector("#search");
 searchButton.addEventListener("click", setCity);

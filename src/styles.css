@@ -11,6 +11,7 @@ body {
   border: 1.5px solid rgb(161, 91, 227);
   border-width: 3px;
   border-radius: 10px;
+  background-color: #faf8f5;
 }
 
 ul {
