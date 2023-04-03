@@ -34,7 +34,8 @@ function setApi(city) {
 }
 
 function showTemp(response) {
-  let cityTemp = Math.round(response.data.temperature.current);
+  fahrenheit = response.data.temperature.current;
+  let cityTemp = Math.round(fahrenheit);
   let city = response.data.city;
   let dateElement = setDateTime(response.data.time * 1000);
   let description = response.data.condition.description;
@@ -42,7 +43,7 @@ function showTemp(response) {
   let iconUrl = response.data.condition.icon_url;
   let iconAlt = response.data.condition.icon;
 
-  let currentTemperature = document.querySelector("#todayWeather strong");
+  let currentTemperature = document.querySelector("#todayTemp");
   let citySearched = document.querySelector("#city");
   let todayDate = document.querySelector("#todayDate");
   let weatherDescription = document.querySelector("#description");
@@ -71,11 +72,37 @@ function setCurrentLocation(position) {
   console.log(lat);
 }
 
+function calculateCelsius(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#todayTemp");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let celsiusValue = ((fahrenheit - 32) * 5) / 9;
+  currentTemperature.innerHTML = Math.round(celsiusValue);
+}
+
+function calculateFahrenheit(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#todayTemp");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  currentTemperature.innerHTML = Math.round(fahrenheit);
+}
+
 let apiKey = "8b1e3171fc9032a9t40o6647047da630";
-setApi("New York City");
+
+let celsiusLink = document.querySelector("#celsiusLink");
+celsiusLink.addEventListener("click", calculateCelsius);
+
+let fahrenheitLink = document.querySelector("#fahrenheitLink");
+fahrenheitLink.addEventListener("click", calculateFahrenheit);
+
+let fahrenheit = null;
 
 let searchButton = document.querySelector("#search");
 searchButton.addEventListener("click", setCity);
 
 let currentLocationButton = document.querySelector("#currentLocation");
 currentLocationButton.addEventListener("click", getLocation);
+
+setApi("New York City");

@@ -30,16 +30,25 @@ li:first-letter {
 #dateDescription {
   padding: 0;
 }
-#todayWeather {
+#temperature {
   font-size: 70px;
   text-align: right;
   font-weight: bold;
 }
 
-#todayWeather .units {
+#temperature .units {
   font-size: 16px;
   top: -34px;
   position: relative;
+}
+
+#temperature .active {
+  color: rgb(41, 40, 41);
+  cursor: default;
+}
+
+#temperature .active:hover {
+  text-decoration: none;
 }
 
 .container {

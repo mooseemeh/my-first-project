@@ -34,10 +34,13 @@
                 <li>Wind: <span id="wind"></span></li>
               </ul>
             </div>
-            <div class="col-lg-8" id="todayWeather">
+            <div class="col-lg-8" id="temperature">
               <img src="" alt="" id="icon" />
-              <strong></strong>
-              <span class="units">°F | <a href="#">°C</a> </span>
+              <strong id="todayTemp"></strong>
+              <span class="units">
+                <a href="" id="fahrenheitLink" class="active">°F</a> |
+                <a href="" id="celsiusLink">°C</a>
+              </span>
             </div>
           </div>
           <div class="row days">
@@ -81,8 +84,8 @@
 
           <form class="form-inline">
             <div class="form-group mx-sm-3 mb-2">
-              <label for="citySearch" class="sr-only"
-                >Search for another city</label
+              <label for="citySearch" class="sr-only">
+                Search for another city</label
               >
               <input
                 type="text"
