@@ -57,6 +57,8 @@ function showTemp(response) {
   windSpeed.innerHTML = wind;
   icon.setAttribute("src", iconUrl);
   icon.setAttribute("alt", iconAlt);
+
+  setForecast();
 }
 
 function getLocation(event) {
@@ -87,6 +89,35 @@ function calculateFahrenheit(event) {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   currentTemperature.innerHTML = Math.round(fahrenheit);
+}
+
+function setForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col days">
+              <div class="forecast-day">${day}</div>
+              <i class="fa-solid fa-sun"></i>
+              <div class="forecast-temps">
+                <span class="max-temp">20°</span>
+                <span class="min-temp">18°</span>
+              </div>
+            </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 let apiKey = "8b1e3171fc9032a9t40o6647047da630";

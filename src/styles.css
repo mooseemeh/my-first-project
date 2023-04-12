@@ -3,7 +3,7 @@ body {
 }
 
 .weather-forecast {
-  max-width: 800px;
+  max-width: 600px;
   margin: 30px auto;
 }
 .weather-card {
@@ -72,6 +72,9 @@ h2 {
 }
 .fa-cloud-rain {
   color: blue;
+}
+#forecast {
+  padding: 20px;
 }
 .forecast-day {
   font-size: 16px;
