@@ -37,7 +37,7 @@ li:first-letter {
 }
 
 #temperature .units {
-  font-size: 16px;
+  font-size: 20px;
   top: -34px;
   position: relative;
 }
