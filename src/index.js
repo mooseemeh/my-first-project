@@ -96,29 +96,36 @@ function calculateFahrenheit(event) {
   currentTemperature.innerHTML = Math.round(fahrenheit);
 }
 
+function setDayFormat(timestamp) {
+  let setDay = new Date(timestamp * 1000);
+  let day = setDay.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function setForecast(response) {
-  console.log(response.data.daily);
+  let forecastData = response.data.daily;
+  console.log(forecastData);
   let forecastElement = document.querySelector("#forecast");
 
-  let days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
+  forecastData.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
             <div class="col days">
-              <div class="forecast-day">${day}</div>
-              <i class="fa-solid fa-sun"></i>
+              <div class="forecast-day">${setDayFormat(forecastDay.time)}</div>
+              <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                forecastDay.condition.icon
+              }.png" alt="" width ="50"/ id="forecast-icon">
               <div class="forecast-temps">
-                <span class="max-temp">20°</span>
-                <span class="min-temp">18°</span>
+                <span class="max-temp">${Math.round(
+                  forecastDay.temperature.maximum
+                )}°</span>
+                <span class="min-temp">${Math.round(
+                  forecastDay.temperature.minimum
+                )}°</span>
               </div>
             </div>`;
   });
