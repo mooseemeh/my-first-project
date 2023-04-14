@@ -93,6 +93,7 @@ function setForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
+
   forecastData.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
