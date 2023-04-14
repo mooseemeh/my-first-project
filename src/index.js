@@ -33,6 +33,11 @@ function setApi(city) {
   axios.get(apiUrl).then(showTemp);
 }
 
+function setForecastApi(city) {
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(setForecast);
+}
+
 function showTemp(response) {
   fahrenheit = response.data.temperature.current;
   let cityTemp = Math.round(fahrenheit);
@@ -58,7 +63,7 @@ function showTemp(response) {
   icon.setAttribute("src", iconUrl);
   icon.setAttribute("alt", iconAlt);
 
-  setForecast();
+  setForecastApi(response.data.city);
 }
 
 function getLocation(event) {
@@ -91,7 +96,8 @@ function calculateFahrenheit(event) {
   currentTemperature.innerHTML = Math.round(fahrenheit);
 }
 
-function setForecast() {
+function setForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = [
